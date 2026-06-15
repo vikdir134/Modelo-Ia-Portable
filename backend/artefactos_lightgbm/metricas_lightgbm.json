@@ -1,0 +1,93 @@
+{
+    "modelo": "LightGBM",
+    "objetivo": "Is_Fraud",
+    "clase_positiva": 1,
+    "descripcion_clase_positiva": "Fraude",
+    "umbral_clasificacion": 0.5,
+    "random_state": 42,
+    "test_size": 0.2,
+    "scale_pos_weight": 11.066365007541478,
+    "mejores_hiperparametros": {
+        "classifier__learning_rate": 0.05,
+        "classifier__max_depth": 8,
+        "classifier__n_estimators": 200,
+        "classifier__num_leaves": 63
+    },
+    "metricas_validacion_cruzada": {
+        "accuracy": 0.994,
+        "precision": 0.9701370589957546,
+        "recall": 0.9576896787423103,
+        "f1_score": 0.963490546516615,
+        "roc_auc": 0.9993939035823092
+    },
+    "metricas_prueba": {
+        "accuracy": 0.994,
+        "precision": 0.9695121951219512,
+        "recall": 0.9578313253012049,
+        "specificity": 0.9972737186477645,
+        "f1_score": 0.9636363636363636,
+        "roc_auc": 0.9994284663189289,
+        "average_precision": 0.995068228008356,
+        "balanced_accuracy": 0.9775525219744847,
+        "mcc": 0.9603876923922587
+    },
+    "matriz_confusion": {
+        "verdaderos_negativos": 1829,
+        "falsos_positivos": 5,
+        "falsos_negativos": 7,
+        "verdaderos_positivos": 159
+    },
+    "variables_numericas": [
+        "Patient_Age",
+        "Claim_Amount",
+        "Approved_Amount",
+        "Days_Between_Service_and_Claim",
+        "Number_of_Claims_Per_Provider_Monthly",
+        "Length_of_Stay",
+        "Chronic_Condition_Flag",
+        "Prior_Visits_12m",
+        "Submission_Month",
+        "Submission_Year",
+        "Approval_Ratio",
+        "Amount_Diff"
+    ],
+    "variables_categoricas": [
+        "Patient_Gender",
+        "Diagnosis_Code",
+        "Procedure_Code",
+        "Insurance_Type",
+        "Provider_Specialty",
+        "Patient_State",
+        "Claim_Status",
+        "Visit_Type"
+    ],
+    "variables_entrada_originales": [
+        "Provider_ID",
+        "Claim_ID",
+        "Patient_Age",
+        "Patient_Gender",
+        "Diagnosis_Code",
+        "Procedure_Code",
+        "Claim_Amount",
+        "Approved_Amount",
+        "Insurance_Type",
+        "Claim_Submission_Date",
+        "Days_Between_Service_and_Claim",
+        "Number_of_Claims_Per_Provider_Monthly",
+        "Provider_Specialty",
+        "Patient_State",
+        "Claim_Status",
+        "Length_of_Stay",
+        "Visit_Type",
+        "Chronic_Condition_Flag",
+        "Prior_Visits_12m"
+    ],
+    "cantidad_variables_transformadas": 57,
+    "versiones": {
+        "scikit_learn": "1.6.1",
+        "lightgbm": "4.6.0",
+        "pandas": "2.2.2",
+        "numpy": "2.0.2"
+    },
+    "fecha_generacion_utc": "2026-06-14T03:05:59.336268+00:00"
+}

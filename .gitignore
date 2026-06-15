@@ -1,0 +1,29 @@
+# Entorno virtual
+.venv/
+venv/
+
+# Caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Configuración local
+.env
+.vscode/
+.idea/
+
+# Archivos temporales
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Caché de pruebas
+.pytest_cache/
+.mypy_cache/
+
+# Notebooks temporales
+.ipynb_checkpoints/
+
+# Modelo original no portable, si existe
+backend/artefactos_lightgbm/modelo_fraude_lightgbm.joblib
