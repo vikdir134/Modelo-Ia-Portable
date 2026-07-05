@@ -8,24 +8,35 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Sistema de detección de fraude</title>
+    <title>SMA Fraude Médico</title>
 
     <link
         rel="stylesheet"
-        href="styles.css"
+        href="css/styles.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/dossier.css"
     >
 </head>
 
 <body>
 
-<header class="encabezado">
+<header class="hero">
     <div>
-        <p class="subtitulo">Inteligencia artificial explicable</p>
+        <p class="eyebrow">
+            Sistema Multiagente · LightGBM · SHAP
+        </p>
 
-        <h1>Detección de fraude en reclamaciones de salud</h1>
+        <h1>
+            Detección explicable de posible fraude en reclamaciones médicas
+        </h1>
 
-        <p>
-            Modelo LightGBM con explicaciones SHAP
+        <p class="hero-texto">
+            El sistema estima el riesgo de una reclamación,
+            explica los factores relevantes y genera un dossier
+            visual para apoyar la auditoría humana.
         </p>
     </div>
 
@@ -37,9 +48,9 @@
     </div>
 </header>
 
-<main class="contenedor">
+<main class="layout">
 
-    <section class="panel">
+    <section class="panel formulario-panel">
         <div class="titulo-seccion">
             <div>
                 <p class="numero-seccion">01</p>
@@ -55,44 +66,21 @@
             </button>
         </div>
 
+        <p class="descripcion">
+            Ingresa solo los datos necesarios. Los identificadores
+            técnicos se generan automáticamente en el backend.
+        </p>
+
         <form id="formularioFraude">
 
-            <h3>Identificación</h3>
+            <h3>Paciente</h3>
 
             <div class="grid-formulario">
 
                 <label>
-                    ID del proveedor
-                    <input
-                        id="Provider_ID"
-                        name="Provider_ID"
-                        type="text"
-                        value="PROVEEDOR_APP"
-                        required
-                    >
-                </label>
-
-                <label>
-                    ID de reclamación
-                    <input
-                        id="Claim_ID"
-                        name="Claim_ID"
-                        type="text"
-                        required
-                    >
-                </label>
-
-            </div>
-
-            <h3>Datos del paciente</h3>
-
-            <div class="grid-formulario">
-
-                <label>
-                    Edad
+                    Edad del paciente
                     <input
                         id="Patient_Age"
-                        name="Patient_Age"
                         type="number"
                         min="0"
                         max="120"
@@ -105,12 +93,9 @@
                     Género
                     <select
                         id="Patient_Gender"
-                        name="Patient_Gender"
                         required
                     >
-                        <option value="">
-                            Cargando opciones...
-                        </option>
+                        <option value="">Cargando...</option>
                     </select>
                 </label>
 
@@ -118,12 +103,9 @@
                     Estado del paciente
                     <select
                         id="Patient_State"
-                        name="Patient_State"
                         required
                     >
-                        <option value="">
-                            Cargando opciones...
-                        </option>
+                        <option value="">Cargando...</option>
                     </select>
                 </label>
 
@@ -131,7 +113,6 @@
                     Condición crónica
                     <select
                         id="Chronic_Condition_Flag"
-                        name="Chronic_Condition_Flag"
                         required
                     >
                         <option value="0">No</option>
@@ -140,10 +121,9 @@
                 </label>
 
                 <label>
-                    Visitas en los últimos 12 meses
+                    Visitas previas en 12 meses
                     <input
                         id="Prior_Visits_12m"
-                        name="Prior_Visits_12m"
                         type="number"
                         min="0"
                         value="2"
@@ -151,48 +131,29 @@
                     >
                 </label>
 
-                <label>
-                    Tipo de visita
-                    <select
-                        id="Visit_Type"
-                        name="Visit_Type"
-                        required
-                    >
-                        <option value="">
-                            Cargando opciones...
-                        </option>
-                    </select>
-                </label>
-
             </div>
 
-            <h3>Información médica</h3>
+            <h3>Atención médica</h3>
 
             <div class="grid-formulario">
 
                 <label>
-                    Código de diagnóstico
+                    Diagnóstico
                     <select
                         id="Diagnosis_Code"
-                        name="Diagnosis_Code"
                         required
                     >
-                        <option value="">
-                            Cargando opciones...
-                        </option>
+                        <option value="">Cargando...</option>
                     </select>
                 </label>
 
                 <label>
-                    Código de procedimiento
+                    Procedimiento
                     <select
                         id="Procedure_Code"
-                        name="Procedure_Code"
                         required
                     >
-                        <option value="">
-                            Cargando opciones...
-                        </option>
+                        <option value="">Cargando...</option>
                     </select>
                 </label>
 
@@ -200,12 +161,19 @@
                     Especialidad del proveedor
                     <select
                         id="Provider_Specialty"
-                        name="Provider_Specialty"
                         required
                     >
-                        <option value="">
-                            Cargando opciones...
-                        </option>
+                        <option value="">Cargando...</option>
+                    </select>
+                </label>
+
+                <label>
+                    Tipo de visita
+                    <select
+                        id="Visit_Type"
+                        required
+                    >
+                        <option value="">Cargando...</option>
                     </select>
                 </label>
 
@@ -213,7 +181,6 @@
                     Duración de estancia
                     <input
                         id="Length_of_Stay"
-                        name="Length_of_Stay"
                         type="number"
                         min="0"
                         value="1"
@@ -223,7 +190,7 @@
 
             </div>
 
-            <h3>Información de la reclamación</h3>
+            <h3>Reclamación</h3>
 
             <div class="grid-formulario">
 
@@ -231,7 +198,6 @@
                     Monto reclamado
                     <input
                         id="Claim_Amount"
-                        name="Claim_Amount"
                         type="number"
                         min="0.01"
                         step="0.01"
@@ -244,7 +210,6 @@
                     Monto aprobado
                     <input
                         id="Approved_Amount"
-                        name="Approved_Amount"
                         type="number"
                         min="0"
                         step="0.01"
@@ -257,25 +222,19 @@
                     Tipo de seguro
                     <select
                         id="Insurance_Type"
-                        name="Insurance_Type"
                         required
                     >
-                        <option value="">
-                            Cargando opciones...
-                        </option>
+                        <option value="">Cargando...</option>
                     </select>
                 </label>
 
                 <label>
-                    Estado de reclamación
+                    Estado de la reclamación
                     <select
                         id="Claim_Status"
-                        name="Claim_Status"
                         required
                     >
-                        <option value="">
-                            Cargando opciones...
-                        </option>
+                        <option value="">Cargando...</option>
                     </select>
                 </label>
 
@@ -283,7 +242,6 @@
                     Fecha de presentación
                     <input
                         id="Claim_Submission_Date"
-                        name="Claim_Submission_Date"
                         type="date"
                         required
                     >
@@ -293,7 +251,6 @@
                     Días entre servicio y reclamación
                     <input
                         id="Days_Between_Service_and_Claim"
-                        name="Days_Between_Service_and_Claim"
                         type="number"
                         min="0"
                         value="10"
@@ -305,7 +262,6 @@
                     Reclamaciones mensuales del proveedor
                     <input
                         id="Number_of_Claims_Per_Provider_Monthly"
-                        name="Number_of_Claims_Per_Provider_Monthly"
                         type="number"
                         min="0"
                         value="5"
@@ -316,248 +272,100 @@
             </div>
 
             <div class="acciones">
-
                 <button
                     id="botonAnalizar"
                     class="boton boton-principal"
                     type="submit"
                 >
-                    Analizar reclamación
+                    Generar dossier
                 </button>
 
                 <p id="mensajeFormulario"></p>
-
             </div>
 
         </form>
     </section>
 
     <section
-        id="seccionResultados"
+        id="seccionDossier"
         class="panel oculto"
     >
         <div class="titulo-seccion">
             <div>
                 <p class="numero-seccion">02</p>
-                <h2>Resultado del análisis</h2>
+                <h2>Dossier automático de auditoría</h2>
             </div>
         </div>
+        <p
+            id="origenNarrativa"
+            class="origen-narrativa"
+        ></p>
+        <div
+            id="contenedorDossier"
+            class="dossier"
+        ></div>
 
-        <div class="grid-resultados">
-
-            <article class="tarjeta-resultado">
-                <span>Clasificación</span>
-                <strong id="resultadoClasificacion">—</strong>
-            </article>
-
-            <article class="tarjeta-resultado">
-                <span>Probabilidad de fraude</span>
-                <strong id="resultadoProbabilidad">—</strong>
-            </article>
-
-            <article class="tarjeta-resultado">
-                <span>Nivel de riesgo</span>
-                <strong id="resultadoRiesgo">—</strong>
-            </article>
-
-            <article class="tarjeta-resultado">
-                <span>Umbral</span>
-                <strong id="resultadoUmbral">—</strong>
-            </article>
-
-        </div>
-
-        <div class="bloque-riesgo">
-            <div class="barra-riesgo">
-                <div id="progresoRiesgo"></div>
-            </div>
-        </div>
-
-        <article class="resumen-xai">
-            <h3>Explicación del modelo</h3>
-            <p id="resultadoResumen"></p>
-        </article>
-
-        <div class="dos-columnas">
-
-            <article>
-                <h3>Factores que aumentan el riesgo</h3>
-
-                <div class="tabla-contenedor">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Variable</th>
-                                <th>Valor</th>
-                                <th>Impacto SHAP</th>
-                            </tr>
-                        </thead>
-
-                        <tbody id="tablaAumentan"></tbody>
-                    </table>
-                </div>
-            </article>
-
-            <article>
-                <h3>Factores que reducen el riesgo</h3>
-
-                <div class="tabla-contenedor">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Variable</th>
-                                <th>Valor</th>
-                                <th>Impacto SHAP</th>
-                            </tr>
-                        </thead>
-
-                        <tbody id="tablaReducen"></tbody>
-                    </table>
-                </div>
-            </article>
-
-        </div>
-
-        <article class="grafico-xai">
-            <h3>Gráfico SHAP individual</h3>
-
-            <img
-                id="imagenShap"
-                alt="Explicación SHAP"
-            >
-        </article>
-        <article class="bloque-informe">
-    <div class="titulo-informe">
-        <div>
-            <h3>
-                Informe de auditoría listo para NotebookLM
-            </h3>
-
-            <p>
-                Copia este informe y añádelo como fuente
-                dentro de NotebookLM.
-            </p>
-        </div>
-
-        <button
-            id="botonCopiarInforme"
-            type="button"
-            class="boton boton-secundario"
-        >
-            Copiar informe
-        </button>
-    </div>
-
-    <textarea
-        id="textoInforme"
-        readonly
-        rows="22"
-        placeholder="El informe aparecerá después del análisis."
-    ></textarea>
-</article>
-
-<article class="bloque-informe">
-    <div class="titulo-informe">
-        <div>
-            <h3>Prompt del superagente</h3>
-
-            <p>
-                Contiene los datos, la predicción y la explicación
-                para utilizarse posteriormente con un LLM.
-            </p>
-        </div>
-
-        <button
-            id="botonCopiarPrompt"
-            type="button"
-            class="boton boton-secundario"
-        >
-            Copiar prompt
-        </button>
-    </div>
-
-    <textarea
-        id="textoPrompt"
-        readonly
-        rows="16"
-    ></textarea>
-</article>
-
-<article class="bloque-informe">
-    <div class="titulo-informe">
-        <div>
-            <h3>Instrucción para generar la PPT</h3>
-
-            <p>
-                Utiliza este texto en NotebookLM después
-                de cargar el informe como fuente.
-            </p>
-        </div>
-
-        <button
-            id="botonCopiarNotebookLM"
-            type="button"
-            class="boton boton-secundario"
-        >
-            Copiar instrucción
-        </button>
-    </div>
-
-    <textarea
-        id="textoNotebookLM"
-        readonly
-        rows="12"
-    ></textarea>
-</article>
-
-        <p class="nota">
-            Esta predicción es una herramienta de apoyo.
-            No sustituye una auditoría o decisión profesional.
-        </p>
-    </section>
-
-    <section class="panel">
-        <div class="titulo-seccion">
-            <div>
-                <p class="numero-seccion">03</p>
-                <h2>Importancia global de variables</h2>
-            </div>
-
+        <div class="acciones-dossier">
             <button
-                id="botonImportancia"
+                id="botonDetalleTecnico"
                 class="boton boton-secundario"
                 type="button"
             >
-                Actualizar
+                Ver detalle técnico XAI
             </button>
         </div>
 
-        <div id="importanciaGlobal" class="importancia-global">
-            Cargando importancia global...
-        </div>
-    </section>
+        <section
+            id="detalleTecnico"
+            class="detalle-tecnico oculto"
+        >
+            <h3>Detalle técnico del análisis</h3>
 
-    <section class="panel">
-        <div class="titulo-seccion">
-            <div>
-                <p class="numero-seccion">04</p>
-                <h2>Información del modelo</h2>
+            <div class="grid-detalle">
+                <article>
+                    <h4>Factores que aumentan el riesgo</h4>
+                    <div id="factoresAumentan"></div>
+                </article>
+
+                <article>
+                    <h4>Factores que reducen el riesgo</h4>
+                    <div id="factoresReducen"></div>
+                </article>
             </div>
-        </div>
 
-        <div id="metricasModelo" class="grid-resultados">
-            Cargando métricas...
-        </div>
+            <article class="grafico-shap">
+                <h4>Gráfico SHAP individual</h4>
+
+                <img
+                    id="imagenShap"
+                    alt="Gráfico SHAP"
+                >
+            </article>
+
+            <article>
+                <h4>Informe de auditoría</h4>
+
+                <textarea
+                    id="textoInforme"
+                    readonly
+                    rows="16"
+                ></textarea>
+            </article>
+        </section>
     </section>
 
 </main>
 
 <footer>
-    Sistema académico de detección de fraude —
-    LightGBM + FastAPI + SHAP
+    Sistema académico de apoyo a la auditoría médica.
+    El resultado no confirma fraude y debe ser revisado por un auditor humano.
 </footer>
 
-<script src="app.js"></script>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/traducciones.js"></script>
+<script src="js/dossier.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 </html>
