@@ -7,4 +7,4 @@
     https://tu-backend.onrender.com
 */
 
-window.API_BASE_URL = "http://127.0.0.1:8000";
+window.API_BASE_URL = "https://sistema-fraude-sma-backend.onrender.com";
